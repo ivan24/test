@@ -1,6 +1,7 @@
 <?php
 
-require_once(__DIR__ . '/lib/php-amqplib/amqp.inc');
+require_once(__DIR__ . '/lib/php-amqplib/vendor/autoload.php');
+use PhpAmqpLib;
 
 $connection = new AMQPConnection('localhost', 5672, 'guest', 'guest');
 $channel = $connection->channel();
