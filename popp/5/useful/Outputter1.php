@@ -1,5 +1,7 @@
 <?php
-class Outputter {
+class Outputter
+{
     // output data
 }
+
 ?>

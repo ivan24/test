@@ -1,14 +1,18 @@
 <?php
-interface Chargeable {
+interface Chargeable
+{
     public function getPrice();
 }
 
-class ShopProduct implements Chargeable {
+class ShopProduct implements Chargeable
+{
     // ...
     protected $price;
+
     // ...
 
-    public function getPrice() {
+    public function getPrice()
+    {
         return $this->price;
     }
     // ...

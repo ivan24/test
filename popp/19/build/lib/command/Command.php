@@ -2,10 +2,11 @@
 
 
 
-abstract class Command {
+abstract class Command
+{
 
 
-    abstract function execute( CommandContext $context );
+    abstract function execute(CommandContext $context);
 }
 
 

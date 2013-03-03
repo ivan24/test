@@ -2,27 +2,33 @@
 /**
  * @package command
  */
-class CommandContext {
+class CommandContext
+{
     private $params = array();
     private $error = "";
 
-    function __construct() {
+    function __construct()
+    {
         $this->params = $_REQUEST;
     }
 
-    function addParam( $key, $val ) { 
-        $this->params[$key]=$val;
+    function addParam($key, $val)
+    {
+        $this->params[$key] = $val;
     }
 
-    function get( $key ) { 
+    function get($key)
+    {
         return $this->params[$key];
     }
 
-    function setError( $error ) {
+    function setError($error)
+    {
         $this->error = $error;
     }
 
-    function getError() {
+    function getError()
+    {
         return $this->error;
     }
 }

@@ -4,65 +4,79 @@ require_once('Validator.php');
 require_once('PHPUnit/Framework/TestCase.php');
 
 
-class ValidatorTest extends PHPUnit_Framework_TestCase {
+class ValidatorTest extends PHPUnit_Framework_TestCase
+{
     private $validator;
 
-    public function setUp() {
+    public function setUp()
+    {
         $store = new UserStore();
-        $store->addUser(  "bob williams", "bob@example.com", "12345" );
-        $this->validator = new Validator( $store );
-    }
-    public function tearDown() {
+        $store->addUser("bob williams", "bob@example.com", "12345");
+        $this->validator = new Validator($store);
     }
 
-    public function testValidate_CorrectPass() {
+    public function tearDown()
+    {
+    }
+
+    public function testValidate_CorrectPass()
+    {
         $this->assertTrue(
-            $this->validator->validateUser( "bob@example.com", "12345" ),
+            $this->validator->validateUser("bob@example.com", "12345"),
             "Expecting successful validation"
-            );
+        );
     }
 
-    public function testValidate_FalsePassFirst() {
+    public function testValidate_FalsePassFirst()
+    {
         $store = $this->getMock("UserStore");
-        $this->validator = new Validator( $store );
+        $this->validator = new Validator($store);
 
-        $store->expects($this->once() )
-              ->method('notifyPasswordFailure')
-              ->with( $this->equalTo('bob@example.com') );
+        $store->expects($this->once())
+            ->method('notifyPasswordFailure')
+            ->with($this->equalTo('bob@example.com'));
 
-        $store->expects( $this->any() )
-              ->method("getUser")
-              ->will( $this->returnValue(array("name"=>"bob@example.com",
-                "pass"=>"right")));
+        $store->expects($this->any())
+            ->method("getUser")
+            ->will(
+            $this->returnValue(
+                array(
+                    "name" => "bob@example.com",
+                    "pass" => "right"
+                )
+            )
+        );
 
         $this->validator->validateUser("bob@example.com", "wrong");
-   
+
     }
 
-    public function testValidate_FalsePass() {
+    public function testValidate_FalsePass()
+    {
         $store = $this->getMock("UserStore");
-        $this->validator = new Validator( $store );
+        $this->validator = new Validator($store);
 
-        $store->expects($this->once() )
-              ->method('notifyPasswordFailure')
-              ->with( $this->equalTo('bob@example.com') );
+        $store->expects($this->once())
+            ->method('notifyPasswordFailure')
+            ->with($this->equalTo('bob@example.com'));
 
-        $store->expects( $this->any() )
-              ->method("getUser")
-              ->will( $this->returnValue(array("name"=>"bob williams","mail"=>"bob@example.com", "pass"=>"right")));
+        $store->expects($this->any())
+            ->method("getUser")
+            ->will($this->returnValue(array("name" => "bob williams", "mail" => "bob@example.com", "pass" => "right")));
 
-        $this->validator->validateUser("bob@example.com", "wrong"); 
+        $this->validator->validateUser("bob@example.com", "wrong");
 
-/*
-        $store = $this->getMock("UserStore");
-        $store->expects( $this->once() )
-              ->method('notifyPasswordFailure');
-        //$store->expects( $this->at( 1 ) ) // raise bug
-        $store->expects( $this->once( ) )
-              ->method("getUser")
-              ->with( $this->equalTo('henry') );
-*/
+        /*
+                $store = $this->getMock("UserStore");
+                $store->expects( $this->once() )
+                      ->method('notifyPasswordFailure');
+                //$store->expects( $this->at( 1 ) ) // raise bug
+                $store->expects( $this->once( ) )
+                      ->method("getUser")
+                      ->with( $this->equalTo('henry') );
+        */
         //$store->getUser("bob@bob.com");
-    } 
+    }
 }
+
 ?>

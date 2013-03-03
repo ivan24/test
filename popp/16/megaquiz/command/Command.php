@@ -1,6 +1,7 @@
 <?php
-abstract class Command {
-    abstract function execute( CommandContext $context );
+abstract class Command
+{
+    abstract function execute(CommandContext $context);
 }
 
 

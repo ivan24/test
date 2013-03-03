@@ -1,58 +1,70 @@
 <?php
 namespace woo\mapper;
+
 //...
 
-class IdentityObject {
+class IdentityObject
+{
     private $name = null;
-    function setName( $name ) {
-        $this->name=$name;
+
+    function setName($name)
+    {
+        $this->name = $name;
     }
 
-    function getName() {
+    function getName()
+    {
         return $this->name;
     }
 }
 
-class EventIdentityObject 
-    extends IdentityObject {
+class EventIdentityObject
+    extends IdentityObject
+{
     private $start = null;
     private $minstart = null;
 
-    function setMinimumStart( $minstart ) {
+    function setMinimumStart($minstart)
+    {
         $this->minstart = $minstart;
     }
-    function getMinimumStart() {
+
+    function getMinimumStart()
+    {
         return $this->minstart;
     }
 
-    function setStart( $start ) {
+    function setStart($start)
+    {
         $this->start = $start;
     }
-    function getStart() {
+
+    function getStart()
+    {
         return $this->start;
     }
 }
 
 $idobj = new EventIdentityObject();
-$idobj->setMinimumStart( time() );
-$idobj->setName( "A Fine Show" );
+$idobj->setMinimumStart(time());
+$idobj->setName("A Fine Show");
 
 $comps = array();
-$name = $idobj->getName(); 
-if ( ! is_null( $name ) ) {
+$name = $idobj->getName();
+if (!is_null($name)) {
     $comps[] = "name = '{$name}'";
 }
-$minstart = $idobj->getMinimumStart(); 
-if ( ! is_null( $minstart ) ) {
+$minstart = $idobj->getMinimumStart();
+if (!is_null($minstart)) {
     $comps[] = "start > {$minstart}";
 }
 
-$start = $idobj->getStart(); 
-if ( ! is_null( $start ) ) {
+$start = $idobj->getStart();
+if (!is_null($start)) {
     $comps[] = "start = '{$start}'";
 }
 
-$clause = " WHERE " . implode( " and ", $comps );
+$clause = " WHERE " . implode(" and ", $comps);
 
 print $clause;
 

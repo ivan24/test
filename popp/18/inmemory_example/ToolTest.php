@@ -3,14 +3,16 @@ require_once('DBFace.php');
 require_once('PHPUnit/Framework/TestCase.php');
 
 
-class ToolTest extends PHPUnit_Framework_TestCase {
+class ToolTest extends PHPUnit_Framework_TestCase
+{
 
-    public function setUp() {
+    public function setUp()
+    {
         $face = new DBFace("sqlite::memory:");
         $face->query("create table user ( id INTEGER PRIMARY KEY, name TEXT )");
         $face->query("insert into user (name) values('bob')");
         $face->query("insert into user (name) values('harry')");
-        $this->mapper = new ToolMapper( $face );
+        $this->mapper = new ToolMapper($face);
         /*
         $result = $x->query("select * from user");
 
@@ -20,14 +22,18 @@ class ToolTest extends PHPUnit_Framework_TestCase {
         */
     }
 
-    function testTool() {
-        self::AssertTrue( true );
+    function testTool()
+    {
+        self::AssertTrue(true);
     }
 }
 
-class ToolMapper {
-    function __construct( DBFace $face ) {
+class ToolMapper
+{
+    function __construct(DBFace $face)
+    {
         //..
     }
 }
+
 ?>

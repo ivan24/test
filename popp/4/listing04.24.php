@@ -1,28 +1,33 @@
 <?php
-class Person {
-    function __get( $property ) {
+class Person
+{
+    function __get($property)
+    {
         $method = "get{$property}";
-        if ( method_exists( $this, $method ) ) {
+        if (method_exists($this, $method)) {
             return $this->$method();
         }
     }
 
-    function __isset( $property ) {
+    function __isset($property)
+    {
         $method = "get{$property}";
-        return ( method_exists( $this, $method ) );
-    }  
+        return (method_exists($this, $method));
+    }
 
-    function getName() {
+    function getName()
+    {
         return "Bob";
     }
-                                                                                
-    function getAge() {
+
+    function getAge()
+    {
         return 44;
     }
 }
 
 $p = new Person();
-if ( isset( $p->name ) ) {
+if (isset($p->name)) {
     print $p->name;
 } else {
     print "nope\n";

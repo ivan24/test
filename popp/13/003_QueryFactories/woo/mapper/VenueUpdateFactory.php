@@ -1,20 +1,23 @@
 <?php
 namespace woo\mapper;
 
-require_once( "woo/mapper/UpdateFactory.php");
+require_once("woo/mapper/UpdateFactory.php");
 
-class VenueUpdateFactory extends UpdateFactory {
+class VenueUpdateFactory extends UpdateFactory
+{
 
-    function newUpdate( \woo\domain\DomainObject $obj ) {
+    function newUpdate(\woo\domain\DomainObject $obj)
+    {
         // not type checking removed
         $id = $obj->getId();
-        $cond = null; 
+        $cond = null;
         $values['name'] = $obj->getName();
-        if ( $id > -1 ) {
+        if ($id > -1) {
             $cond['id'] = $id;
         }
-        return $this->buildStatement( "venue", $values, $cond );
+        return $this->buildStatement("venue", $values, $cond);
     }
 
 }
+
 ?>

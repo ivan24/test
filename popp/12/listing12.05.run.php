@@ -1,10 +1,10 @@
 <?php
-require_once( "listing12.05.php" ); // Registry
+require_once("listing12.05.php"); // Registry
 
 // test file app registry
-if ( ! isset( $argv[1] ) ) {
+if (!isset($argv[1])) {
     // run script without argument to monitor
-    while ( 1 ) {
+    while (1) {
         sleep(5);
         $thing = \woo\base\ApplicationRegistry::getDSN();
 
@@ -16,6 +16,6 @@ if ( ! isset( $argv[1] ) ) {
     }
 } else {
     // run script with argument in separate window to change value.. see the result in monitor process
-    print "setting dsn {$argv[1]}\n"; 
+    print "setting dsn {$argv[1]}\n";
     \woo\base\ApplicationRegistry::setDSN($argv[1]);
 }

@@ -13,13 +13,16 @@ require_once("quizobjects/User.php");
  * @package quiztools
  * Handles user access
  */
-class AccessManager {
-    function login( $user, $pass ) {
-        $ret = new User( $user );
+class AccessManager
+{
+    function login($user, $pass)
+    {
+        $ret = new User($user);
         return $ret;
     }
 
-    function getError() {
+    function getError()
+    {
         return "move along now, nothing to see here";
     }
 }
@@ -27,8 +30,10 @@ class AccessManager {
 /**
  * @package quiztools
  */
-class ReceiverFactory {
-    static function getAccessManager() {
+class ReceiverFactory
+{
+    static function getAccessManager()
+    {
         return new AccessManager();
     }
 }

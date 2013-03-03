@@ -1,13 +1,17 @@
 <?php
 require_once "UserStore.php";
 
-class Validator {
+class Validator
+{
     private $store;
-    public function __construct( UserStore $store ) {
+
+    public function __construct(UserStore $store)
+    {
         $this->store = $store;
     }
 
-    public function validateUser( $mail, $pass ) {
+    public function validateUser($mail, $pass)
+    {
         /*
         // this is the fix after tests fail 
         $user = $this->store->getUser( $mail );
@@ -20,13 +24,13 @@ class Validator {
         $this->store->notifyPasswordFailure( $mail );
         return false;
         */
-        if ( ! is_array($user = $this->store->getUser( $mail )) ) {
+        if (!is_array($user = $this->store->getUser($mail))) {
             return false;
         }
-        if ( $user['pass'] == $pass ) {
+        if ($user['pass'] == $pass) {
             return true;
         }
-        $this->store->notifyPasswordFailure( $mail );
+        $this->store->notifyPasswordFailure($mail);
         return false;
     }
 }

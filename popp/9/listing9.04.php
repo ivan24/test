@@ -1,33 +1,39 @@
 <?php
 
-class Preferences {
+class Preferences
+{
     private $props = array();
     private static $instance;
 
-    private function __construct() { }
+    private function __construct()
+    {
+    }
 
-    public static function getInstance() {
-        if ( empty( self::$instance ) ) {
+    public static function getInstance()
+    {
+        if (empty(self::$instance)) {
             self::$instance = new Preferences();
         }
         return self::$instance;
     }
 
-    public function setProperty( $key, $val ) {
+    public function setProperty($key, $val)
+    {
         $this->props[$key] = $val;
     }
 
-    public function getProperty( $key ) {
+    public function getProperty($key)
+    {
         return $this->props[$key];
     }
 }
 
 
 $pref = Preferences::getInstance();
-$pref->setProperty( "name", "matt" );
+$pref->setProperty("name", "matt");
 
-unset( $pref ); // remove the reference
+unset($pref); // remove the reference
 
 $pref2 = Preferences::getInstance();
-print $pref2->getProperty( "name" ) ."\n"; // demonstrate value is not lost
+print $pref2->getProperty("name") . "\n"; // demonstrate value is not lost
 ?>

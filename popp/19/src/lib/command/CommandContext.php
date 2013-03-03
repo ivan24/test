@@ -9,7 +9,7 @@
  * Commands require disparate data according to context. The
  * CommandContext object is passed to the {@link Command::execute()}
  * method, and contains data in key/value format. The class
- * automatically extracts the contents of the $_REQUEST 
+ * automatically extracts the contents of the $_REQUEST
  * superglobal.
  *
  * @package command
@@ -17,45 +17,51 @@
  * @copyright 2004 Ambridge Technologies Ltd
  */
 
-class CommandContext {
-/**
- * The application name.
- * Used by various clients for error messages, etc.
- * @var string
- */
+class CommandContext
+{
+    /**
+     * The application name.
+     * Used by various clients for error messages, etc.
+     * @var string
+     */
     public $applicationName;
 
-/**
- * Encapsulated Keys/values.
- * This class is essentially a wrapper for this array
- * @var array
- */
+    /**
+     * Encapsulated Keys/values.
+     * This class is essentially a wrapper for this array
+     * @var array
+     */
     private $params = array();
 
-/**
- * An error message.
- * @var string
- */
+    /**
+     * An error message.
+     * @var string
+     */
     private $error = "";
 
-    function __construct( $appname ) {
+    function __construct($appname)
+    {
         $this->params = $_REQUEST;
         $this->applicationName = $appname;
     }
 
-    function addParam( $key, $val ) { 
-        $this->params[$key]=$val;
+    function addParam($key, $val)
+    {
+        $this->params[$key] = $val;
     }
 
-    function get( $key ) { 
+    function get($key)
+    {
         return $this->params[$key];
     }
 
-    function setError( $error ) {
+    function setError($error)
+    {
         $this->error = $error;
     }
 
-    function getError() {
+    function getError()
+    {
         return $this->error;
     }
 }

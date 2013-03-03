@@ -1,6 +1,9 @@
 <?php
 
-class StringThing {}
+class StringThing
+{
+}
+
 $st = new StringThing();
 print $st;
 ?>

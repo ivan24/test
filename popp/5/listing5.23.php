@@ -1,30 +1,42 @@
 <?php
 
-class OtherShop {
-    function thing() {
+class OtherShop
+{
+    function thing()
+    {
         print "thing\n";
     }
-    function andAnotherthing( $a, $b ) {
+
+    function andAnotherthing($a, $b)
+    {
         print "another thing ($a, $b)\n";
     }
 }
 
-class Delegator {
+class Delegator
+{
     private $thirdpartyShop;
-    function __construct() {
+
+    function __construct()
+    {
         $this->thirdpartyShop = new OtherShop();
     }
 
-    function __call( $method, $args ) {
-        if ( method_exists( $this->thirdpartyShop, $method ) ) {
+    function __call($method, $args)
+    {
+        if (method_exists($this->thirdpartyShop, $method)) {
             return call_user_func_array(
-                        array( $this->thirdpartyShop,
-                            $method ), $args );
+                array(
+                    $this->thirdpartyShop,
+                    $method
+                ),
+                $args
+            );
         }
     }
 }
 
 $d = new Delegator();
-$d->andAnotherThing( "a", "b" );
+$d->andAnotherThing("a", "b");
 
 ?>

@@ -1,63 +1,73 @@
 <?php
 namespace woo\mapper;
 
-$EG_DISABLE_INCLUDES=true;
+$EG_DISABLE_INCLUDES = true;
 //require_once( "woo/mapper/Mapper.php" );
-require_once( "listing13.01.php" );
-require_once( "woo/base/Exceptions.php" );
-require_once( "woo/domain/Venue.php" );
+require_once("listing13.01.php");
+require_once("woo/base/Exceptions.php");
+require_once("woo/domain/Venue.php");
 //require_once( "woo/mapper/Collections.php" );
 //require_once( "woo/domain.php" );
 
-class VenueMapper extends Mapper {
+class VenueMapper extends Mapper
+{
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
-        $this->selectStmt = self::$PDO->prepare( 
-                            "SELECT * FROM venue WHERE id=?");
-        $this->updateStmt = self::$PDO->prepare( 
-                            "update venue set name=?, id=? where id=?");
-        $this->insertStmt = self::$PDO->prepare( 
-                            "insert into venue ( name ) 
-                             values( ? )");
-    } 
-    
-    function getCollection( array $raw ) {
-        return new SpaceCollection( $raw, $this );
+        $this->selectStmt = self::$PDO->prepare(
+            "SELECT * FROM venue WHERE id=?"
+        );
+        $this->updateStmt = self::$PDO->prepare(
+            "update venue set name=?, id=? where id=?"
+        );
+        $this->insertStmt = self::$PDO->prepare(
+            "insert into venue ( name )
+                             values( ? )"
+        );
     }
 
-    protected function doCreateObject( array $array ) {
-        $obj = new \woo\domain\Venue( $array['id'] );
-        $obj->setname( $array['name'] );
+    function getCollection(array $raw)
+    {
+        return new SpaceCollection($raw, $this);
+    }
+
+    protected function doCreateObject(array $array)
+    {
+        $obj = new \woo\domain\Venue($array['id']);
+        $obj->setname($array['name']);
         // $space_mapper = new spacemapper();
         // $space_collection = $space_mapper->findbyvenue( $array['id'] );
         // $obj->setspaces( $space_collection );
         return $obj;
     }
 
-    protected function doInsert( \woo\domain\DomainObject $object ) {
+    protected function doInsert(\woo\domain\DomainObject $object)
+    {
         print "inserting\n";
         debug_print_backtrace();
-        $values = array( $object->getName() ); 
-        $this->insertStmt->execute( $values );
+        $values = array($object->getName());
+        $this->insertStmt->execute($values);
         $id = self::$PDO->lastInsertId();
-        $object->setId( $id );
-    }
-    
-    function update( \woo\domain\DomainObject $object ) {
-        print "updating\n";
-        $values = array( $object->getName(), $object->getId(), $object->getId() ); 
-        $this->updateStmt->execute( $values );
+        $object->setId($id);
     }
 
-    function selectStmt() {
+    function update(\woo\domain\DomainObject $object)
+    {
+        print "updating\n";
+        $values = array($object->getName(), $object->getId(), $object->getId());
+        $this->updateStmt->execute($values);
+    }
+
+    function selectStmt()
+    {
         return $this->selectStmt;
     }
 }
 
 $mapper = new VenueMapper();
 $venue = $mapper->find(2);
-print_r( $venue );
+print_r($venue);
 
 /*
 $venue = new \woo\domain\Venue();

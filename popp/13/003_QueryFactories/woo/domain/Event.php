@@ -1,52 +1,63 @@
 <?php
 namespace woo\domain;
 
-require_once( "woo/domain/DomainObject.php" );
+require_once("woo/domain/DomainObject.php");
 
-class Event extends DomainObject {
+class Event extends DomainObject
+{
     private $start;
     private $duration;
     private $name;
     private $space;
 
-    function __construct( $id=null, $name="unknown" ) {
-        parent::__construct( $id );
+    function __construct($id = null, $name = "unknown")
+    {
+        parent::__construct($id);
         $this->name = $name;
     }
 
-    function setStart( $start_l ) {
+    function setStart($start_l)
+    {
         $this->start = $start_l;
     }
 
-    function getStart( ) {
+    function getStart()
+    {
         return $this->start;
     }
 
-    function setSpace( Space $space ) {
+    function setSpace(Space $space)
+    {
         $this->space = $space;
         $this->markDirty();
     }
 
-    function getSpace( ) {
+    function getSpace()
+    {
         return $this->space;
     }
 
-    function setDuration( $duration_i ) {
+    function setDuration($duration_i)
+    {
         $this->duration = $duration_i;
         $this->markDirty();
     }
-    
-    function getDuration() {
+
+    function getDuration()
+    {
         return $this->duration;
     }
 
-    function setName( $name_s ) {
+    function setName($name_s)
+    {
         $this->name = $name_s;
         $this->markDirty();
     }
-    
-    function getName() {
+
+    function getName()
+    {
         return $this->name;
     }
 }
+
 ?>

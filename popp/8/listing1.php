@@ -1,17 +1,20 @@
 <?php
-abstract class Lesson {
+abstract class Lesson
+{
     protected $duration;
     const     FIXED = 1;
     const     TIMED = 2;
-    private   $costtype;
+    private $costtype;
 
-    function __construct( $duration, $costtype=1 ) {
+    function __construct($duration, $costtype = 1)
+    {
         $this->duration = $duration;
         $this->costtype = $costtype;
     }
 
-    function cost() {
-        switch ( $this->costtype ) {
+    function cost()
+    {
+        switch ($this->costtype) {
             CASE self::TIMED :
                 return (5 * $this->duration);
                 break;
@@ -24,8 +27,9 @@ abstract class Lesson {
         }
     }
 
-    function chargeType() {
-        switch ( $this->costtype ) {
+    function chargeType()
+    {
+        switch ($this->costtype) {
             CASE self::TIMED :
                 return "hourly rate";
                 break;
@@ -41,17 +45,19 @@ abstract class Lesson {
     // more lesson methods...
 }
 
-class Lecture extends Lesson {
+class Lecture extends Lesson
+{
     // Lecture-specific implementations ...
 }
 
-class Seminar extends Lesson {
+class Seminar extends Lesson
+{
     // Seminar-specific implementations ...
 }
 
-$lecture = new Lecture( 5, Lesson::FIXED );
-print "{$lecture->cost()} ({$lecture->chargeType()})\n"; 
+$lecture = new Lecture(5, Lesson::FIXED);
+print "{$lecture->cost()} ({$lecture->chargeType()})\n";
 
-$seminar= new Seminar( 3, Lesson::TIMED );
-print "{$seminar->cost()} ({$seminar->chargeType()})\n"; 
+$seminar = new Seminar(3, Lesson::TIMED);
+print "{$seminar->cost()} ({$seminar->chargeType()})\n";
 ?>

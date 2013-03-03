@@ -1,9 +1,13 @@
 <?php
 
-class UnitException extends Exception {}
+class UnitException extends Exception
+{
+}
 
-abstract class Unit {
-    function getComposite() {
+abstract class Unit
+{
+    function getComposite()
+    {
         return null;
     }
 
@@ -11,39 +15,50 @@ abstract class Unit {
 }
 
 
-abstract class CompositeUnit extends Unit {
+abstract class CompositeUnit extends Unit
+{
     private $units = array();
 
-    function getComposite() {
+    function getComposite()
+    {
         return $this;
     }
 
-    protected function units() {
+    protected function units()
+    {
         return $this->units;
     }
 
-    function removeUnit( Unit $unit ) {
+    function removeUnit(Unit $unit)
+    {
         // >= php 5.3
         //$this->units = array_udiff( $this->units, array( $unit ), 
         //                function( $a, $b ) { return ($a === $b)?0:1; } );
 
         // < php 5.3
-        $this->units = array_udiff( $this->units, array( $unit ), 
-                        create_function( '$a,$b', 'return ($a === $b)?0:1;' ) );
+        $this->units = array_udiff(
+            $this->units,
+            array($unit),
+            create_function('$a,$b', 'return ($a === $b)?0:1;')
+        );
     }
 
-    function addUnit( Unit $unit ) {
-        if ( in_array( $unit, $this->units, true ) ) {
+    function addUnit(Unit $unit)
+    {
+        if (in_array($unit, $this->units, true)) {
             return;
         }
         $this->units[] = $unit;
     }
 }
-class Army extends CompositeUnit {
 
-    function bombardStrength() {
+class Army extends CompositeUnit
+{
+
+    function bombardStrength()
+    {
         $ret = 0;
-        foreach( $this->units as $unit ) {
+        foreach ($this->units as $unit) {
             $ret += $unit->bombardStrength();
         }
         return $ret;
@@ -51,41 +66,50 @@ class Army extends CompositeUnit {
 
 }
 
-class Archer extends Unit {
-    function bombardStrength() {
+class Archer extends Unit
+{
+    function bombardStrength()
+    {
         return 4;
     }
 }
 
-class LaserCannonUnit extends Unit {
-    function bombardStrength() {
+class LaserCannonUnit extends Unit
+{
+    function bombardStrength()
+    {
         return 44;
     }
 }
 
-class Cavalry extends Unit {
-    function bombardStrength() {
+class Cavalry extends Unit
+{
+    function bombardStrength()
+    {
         return 33;
     }
 }
 
-class TroopCarrier {
+class TroopCarrier
+{
 
-    function addUnit( Unit $unit ) {
-        if ( $unit instanceof Cavalry ) {
+    function addUnit(Unit $unit)
+    {
+        if ($unit instanceof Cavalry) {
             throw new UnitException("Can't get a horse on the vehicle");
         }
-        super::addUnit( $unit );
+        super::addUnit($unit);
     }
 
-    function bombardStrength() {
+    function bombardStrength()
+    {
         return 0;
     }
 }
 
 
-$tc= new TroopCarrier();
-$ca= new Cavalry();
+$tc = new TroopCarrier();
+$ca = new Cavalry();
 
-$tc->addUnit( $ca ) ;
+$tc->addUnit($ca);
 ?>

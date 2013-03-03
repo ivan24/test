@@ -3,7 +3,8 @@
 
 
 
-class CommandContext {
+class CommandContext
+{
 
     public $applicationName;
 
@@ -13,24 +14,29 @@ class CommandContext {
 
     private $error = "";
 
-    function __construct( $appname ) {
+    function __construct($appname)
+    {
         $this->params = $_REQUEST;
         $this->applicationName = $appname;
     }
 
-    function addParam( $key, $val ) { 
-        $this->params[$key]=$val;
+    function addParam($key, $val)
+    {
+        $this->params[$key] = $val;
     }
 
-    function get( $key ) { 
+    function get($key)
+    {
         return $this->params[$key];
     }
 
-    function setError( $error ) {
+    function setError($error)
+    {
         $this->error = $error;
     }
 
-    function getError() {
+    function getError()
+    {
         return $this->error;
     }
 }

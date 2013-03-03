@@ -1,29 +1,36 @@
 <?php
 
-class Product {
+class Product
+{
     public $name;
     public $price;
-    function __construct( $name, $price ) {
+
+    function __construct($name, $price)
+    {
         $this->name = $name;
         $this->price = $price;
     }
 }
 
-class ProcessSale {
+class ProcessSale
+{
     private $callbacks;
 
-    function registerCallback( $callback ) {
-        if ( ! is_callable( $callback ) ) {
-            throw new Exception( "callback not callable" );
+    function registerCallback($callback)
+    {
+        if (!is_callable($callback)) {
+            throw new Exception("callback not callable");
         }
         $this->callbacks[] = $callback;
     }
 
-    function sale( $product ) {
+    function sale($product)
+    {
         print "{$product->name}: processing \n";
-        foreach ( $this->callbacks as $callback ) {
-            call_user_func( $callback, $product );
+        foreach ($this->callbacks as $callback) {
+            call_user_func($callback, $product);
         }
     }
 }
+
 ?>

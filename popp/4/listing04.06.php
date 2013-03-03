@@ -1,17 +1,20 @@
 <?php
-require_once( "listing04.03.php" );
+require_once("listing04.03.php");
 
-abstract class ShopProductWriter {
+abstract class ShopProductWriter
+{
     protected $products = array();
 
-    public function addProduct( ShopProduct $shopProduct ) {
-        $this->products[]=$shopProduct;
+    public function addProduct(ShopProduct $shopProduct)
+    {
+        $this->products[] = $shopProduct;
     }
 
-    abstract public function write( );
+    abstract public function write();
 }
 
-class ErroredWriter extends ShopProductWriter{
+class ErroredWriter extends ShopProductWriter
+{
 }
 
 $writer = new ErroredWriter();

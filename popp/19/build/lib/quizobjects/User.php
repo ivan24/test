@@ -4,5 +4,7 @@
 
 
 >>>>>>> 1.2
-class User {}
+class User
+{
+}
 ?>

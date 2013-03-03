@@ -1,29 +1,38 @@
 <?php
-abstract class DomainObject {
+abstract class DomainObject
+{
     private $group;
-    public function __construct() {
+
+    public function __construct()
+    {
         $this->group = static::getGroup();
     }
 
-    public static function create() {
-        return new static();        
+    public static function create()
+    {
+        return new static();
     }
 
-    static function getGroup() {
-        return "default"; 
-    }
-}
-
-class User extends DomainObject {
-}
-
-class Document extends DomainObject {
-    static function getGroup() {
-        return "document"; 
+    static function getGroup()
+    {
+        return "default";
     }
 }
 
-class SpreadSheet extends Document {
+class User extends DomainObject
+{
+}
+
+class Document extends DomainObject
+{
+    static function getGroup()
+    {
+        return "document";
+    }
+}
+
+class SpreadSheet extends Document
+{
 }
 
 print_r(User::create());

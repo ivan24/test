@@ -1,6 +1,8 @@
 <?php
 require_once "useful/Outputter1.php";
-class Outputter {
+class Outputter
+{
     // output data
 }
+
 ?>

@@ -1,9 +1,11 @@
 <?php
-final class Checkout {
+final class Checkout
+{
     // ...
 }
 
-class IllegalCheckout extends Checkout {
+class IllegalCheckout extends Checkout
+{
     // ...
 }
 

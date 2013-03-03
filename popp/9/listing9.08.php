@@ -1,69 +1,91 @@
 <?php
-abstract class ApptEncoder {
+abstract class ApptEncoder
+{
     abstract function encode();
 }
 
-class BloggsApptEncoder extends ApptEncoder {
-    function encode() {
+class BloggsApptEncoder extends ApptEncoder
+{
+    function encode()
+    {
         return "Appointment data encoded in BloggsCal format\n";
     }
 }
 
-class MegaApptEncoder extends ApptEncoder {
-    function encode() {
+class MegaApptEncoder extends ApptEncoder
+{
+    function encode()
+    {
         return "Appointment data encoded in MegaCal format\n";
     }
 }
 
 
-abstract class CommsManager {
+abstract class CommsManager
+{
     abstract function getHeaderText();
+
     abstract function getApptEncoder();
+
     abstract function getTtdEncoder();
+
     abstract function getContactEncoder();
+
     abstract function getFooterText();
 }
 
-class BloggsCommsManager extends CommsManager {
-    function getHeaderText() {
+class BloggsCommsManager extends CommsManager
+{
+    function getHeaderText()
+    {
         return "BloggsCal header\n";
     }
 
-    function getApptEncoder() {
+    function getApptEncoder()
+    {
         return new BloggsApptEncoder();
     }
 
-    function getTtdEncoder() {
+    function getTtdEncoder()
+    {
         return new BloggsTtdEncoder();
     }
 
-    function getContactEncoder() {
+    function getContactEncoder()
+    {
         return new BloggsContactEncoder();
     }
 
-    function getFooterText() {
+    function getFooterText()
+    {
         return "BloggsCal footer\n";
     }
 }
 
-class MegaCommsManager extends CommsManager {
-    function getHeaderText() {
+class MegaCommsManager extends CommsManager
+{
+    function getHeaderText()
+    {
         return "MegaCal header\n";
     }
 
-    function getApptEncoder() {
+    function getApptEncoder()
+    {
         return new MegaApptEncoder();
     }
 
-    function getTtdEncoder() {
+    function getTtdEncoder()
+    {
         return new MegaTtdEncoder();
     }
 
-    function getContactEncoder() {
+    function getContactEncoder()
+    {
         return new MegaContactEncoder();
     }
 
-    function getFooterText() {
+    function getFooterText()
+    {
         return "MegaCal footer\n";
     }
 }
