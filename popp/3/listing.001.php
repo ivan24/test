@@ -1,5 +1,7 @@
 <?php
-class ShopProduct {
+class ShopProduct
+{
     // class body
 }
+
 ?>
