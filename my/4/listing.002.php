@@ -2,27 +2,38 @@
 abstract class DomainObject
 {
     private $group;
-    public function __costruct()
+
+    public function __construct()
     {
         $this->group = static::getGroup();
     }
-    public static function getGroup()
-    {
-        return 'default';
-    }
+
     public static function create()
     {
         return new static();
     }
+
+    static function getGroup()
+    {
+        return "default";
+    }
 }
-class User extends DomainObject{}
+
+class User extends DomainObject
+{
+}
+
 class Document extends DomainObject
 {
     static function getGroup()
     {
-        return 'documment';
+        return "document";
     }
 }
-class SpreadSheet extends Document{}
+
+class SpreadSheet extends Document
+{
+}
+
 print_r(User::create());
 print_r(SpreadSheet::create());
