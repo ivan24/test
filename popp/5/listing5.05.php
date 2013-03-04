@@ -12,5 +12,5 @@ class Debug
 
 namespace main;
 
-\com\getinstance\util\Debug::helloWorld();
+com\getinstance\util\Debug::helloWorld();
 ?>

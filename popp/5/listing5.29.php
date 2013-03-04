@@ -14,6 +14,6 @@ class ReflectionUtil
 }
 
 $class = new ReflectionClass('CdProduct');
-$method = $class->getMethod('getSummaryLine');
+$method = $class->getMethod('__construct');
 print ReflectionUtil::getMethodSource($method);
 ?>
