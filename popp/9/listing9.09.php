@@ -58,11 +58,13 @@ class BloggsCommsManager extends CommsManager
     }
 }
 
-/*
+
 $mgr = new BloggsCommsManager();
 print $mgr->getHeaderText();
+print "<hr>";
 print $mgr->make( CommsManager::APPT )->encode();
+print "<hr>";
 print $mgr->getFooterText();
-*/
+
 
 ?>
