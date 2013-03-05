@@ -24,7 +24,7 @@ class Army extends Unit
     function removeUnit(Unit $unit)
     {
         // >= php 5.3
-        //$this->units = array_udiff( $this->units, array( $unit ), 
+        //$this->units = array_udiff( $this->units, array( $unit ),
         //                function( $a, $b ) { return ($a === $b)?0:1; } );
 
         // < php 5.3
@@ -86,7 +86,6 @@ $army = new Army();
 $army->addUnit($soldier);
 $army->addUnit($tank);
 $army->addUnit($tank2);
-
 print_r($army);
 
 $army->removeUnit($tank2);
