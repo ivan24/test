@@ -1,3 +1,6 @@
 [submodule "rabbitmq-tutorials"]
 	path = rabbitmq-tutorials
 	url = git://github.com/rabbitmq/rabbitmq-tutorials.git
+[submodule "php-amqplib"]
+	path = php-amqplib
+	url = git://github.com/videlalvaro/php-amqplib.git
