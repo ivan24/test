@@ -1,0 +1,11 @@
+##Title = Общий обработчик директории
+##Text
+{if !@$smarty.request.name}
+  Нельзя напрямую обращаться к обработчику! Используйте следующие пути:
+  <ul>
+  <li><a href="test.html">первый пример</a>
+  <li><a href="other.html">второй пример</a>
+  </ul>
+{else}
+  Запрошенный файл: <tt>{$smarty.request.name}</tt>
+{/if}

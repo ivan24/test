@@ -1,0 +1,75 @@
+<?php ## Описание класса rebus
+class rebus extends domDocument {
+/**
+ * Класс rebus для работы с XML-файлами описания ребусов.
+ * Данный класс является расширением класса domDocument
+ * и содержит дополнительные методы по отображению HTML-кода
+ * ребуса и формирования ответа.
+ */
+
+    // {{{ show()
+    /**
+     * Сформировать HTML-кода ребуса
+     *
+     * @return  void HTML-кода ребуса
+     */
+    function show()
+    {
+    //Заглушка
+    }
+
+
+    // }}}
+    // {{{ result()
+
+    /**
+     * Сформировать ответ ребуса
+     *
+     *  @param domText $textnode экземпляр класса domText в который
+     *                           записывается ответ ребуса
+     */
+    function result($textnode)
+    {
+	$root=$this->documentElement;
+	foreach($root->childNodes as $node) {
+	    if ($node->nodeType==XML_TEXT_NODE) {
+		$textnode->appendData($node->nodeValue);
+		continue;
+	    }
+	    if ($node->nodeType!=XML_ELEMENT_NODE)
+		continue;
+	    $text=$node->firstChild;
+	    switch (utf8decode($node->nodeName))  {
+	    case 'удалить':
+		if (($left=$node->getAttribute(utf8encode('слева'))))
+		    $text->deleteData(0,$left);
+		if (($right=$node->getAttribute(utf8encode('справа'))))
+		    $text->deleteData($text->length-$right,$right);
+		break;
+	    case 'заменить':
+		$letter=$node->getAttribute(utf8encode('букву'));
+		$to=$node->getAttribute(utf8encode('на'));
+		$pos=strpos(utf8decode($text->data),utf8decode($letter));
+		$text->replaceData($pos,1,$to);
+		break;
+	    case 'предлог':
+		$txtlen=$text->length;
+		foreach($node->attributes as $attrname => $attrnode) {
+		    $text->insertData($text->length-$txtlen,
+				    $node->getAttribute($attrname));
+		}
+		break;
+	    case 'пробел':
+		$text->appendData(' ');
+		break;
+	    case '':
+		break;
+		}
+	    $textnode->appendData($text->nodeValue);
+	}
+    }
+
+    // }}}
+
+}
+?>

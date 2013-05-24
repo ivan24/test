@@ -1,0 +1,9 @@
+# Запрещаем доступ к этой служебной директории из браузера.
+deny from all
+# Однако для обработчика шаблонизатора делаем исключение...
+<FilesMatch "^TemplierHandler">
+allow from all
+SetHandler application/x-httpd-php
+# Раскомментируете, чтобы работать с PHP5, а не PHP4.
+#SetHandler application/x-httpd-php5
+</FilesMatch>

@@ -1,0 +1,76 @@
+<?php ## Описание класса order (order.class)
+require_once 'unicode.inc';
+/**
+ * Класс для работы с заказом.
+ */
+class order extends domDocument {
+    // {{{ properties
+    var $xmlfile, //имя XML-файла заказа
+	$goods;   //массив списока товаров товар => массив вначений аргументов
+    // }}}
+    // {{{ constructor
+    /**
+     * Инициализировать заказ.
+     *
+     * @param string $file имя XML файла описывающий заказ
+     */
+    function order($file='order.xml')
+    {
+	parent::__construct('1.0',Encoding);	//создать domDocumnent
+	$this->xmlfile=$file;		//запомнить имя XML-файла
+	$this->preserveWhiteSpace=false;//убрать лишние \n
+	$this->formatOutput=true;	//вывод форматировать
+	$this->load($this->xmlfile);	//загрузить файл
+	$this->goods=Array();
+	for($child=$this->documentElement->firstChild;
+	    $child; $child=$child->nextSibling) {
+	   //пройтись по узлам 1-го уровня
+	    $utfname=utf8encode('имя'); //атрибут имя в UTF-8
+	    //выделить элементы
+	    if ($child->nodeType!=XML_ELEMENT_NODE) continue;
+	    $name=$child->getAttribute($utfname);   //имя товара
+	    $params=Array();	//массив агрументов
+	    for($i=0;$i<$child->attributes->length;$i++) {
+		$attrname=$child->attributes->item($i)->name;
+		//аргумент "имя" не включать
+		if ($attrname==$utfname) continue;
+		//запомнить значения аргументов в массиве
+		$params[$attrname]=$child->attributes->item($i)->value;
+	    }
+	    $params['domelement']=$child; //запомнить адрес элемента
+	    $this->goods[$name]=$params;
+	}
+    }
+    // }}}
+    // {{{ done()
+    /**
+     * Вычеркнуть товара из списка.
+     *
+     *	@param string $good имя товара
+     */
+    function done($good)
+    {
+	//элемент  заказа товара
+	$element=$this->goods[$good]['domelement'];
+	if ($element) { 	//есть такой?
+	    //удалить элемент из DOM-дерева
+	    $element->parentNode->removeChild($element);
+	    unset($this->goods[$good]);//удалить описатель в массиве
+	}
+    }
+    // }}}
+    // {{{ save()
+    /**
+     * Запомнить состояние заказа.
+     *
+     * @param string $file имя XML файла описывающий заказ
+     */
+    function save($xmlfile=NULL)  //запомнить состояние заказа
+    {
+	if ($xmlfile==NULL)	//если файл не указан
+	    $xmlfile=$this->xmlfile;	//взять начальный файл
+	parent::save($xmlfile); //сохранить файл
+    }
+    // }}}
+}
+?>

@@ -1,0 +1,10 @@
+##Title = Локальные переменные
+##Order = 1000
+##Text 
+{assign var="test" value="old"}
+Значение переменной до входа в контейнер: {$test}<br>
+{t_local vars="test"}
+  {assign var="test" value="new"}
+  Значение переменной после входа в контейнер: {$test}<br>
+{/t_local}
+Значение переменной после выхода из контейнера: {$test}<br>

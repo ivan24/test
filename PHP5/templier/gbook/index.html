@@ -1,0 +1,84 @@
+##Title = Добавить сообщение
+##Text
+<style>
+  .error { color:red; font-weight:bold; display:block; }
+</style>
+<!-- Форма ввода новой записи. -->
+{t_component src="Test_Gbook_Add" name="error" book="test"}
+  <form method="post">
+    <table width="80%">
+      <tr valign=top>
+        <td width="10%">Ваше имя:</td>
+        <td>
+          <input type=text name="new[name]" style="width:100%">
+          {if @$error.name}<span class=error>Не указано имя!</span>{/if}
+        </td>
+      </tr>
+      <tr valign=top>
+        <td width="10%">E-mail:</td>
+        <td>
+          <input type=text name="new[email]" style="width:100%">
+          {if @$error.email}
+            <span class=error>Не указан E-mail!</span>
+          {/if}
+        </td>
+      </tr>
+      <tr valign=top>
+        <td width="10%">Профессия:</td>
+        <td>
+          <select name="new[occupation]" style="width:100%">
+            <option>
+            <option>Программист
+            <option>Web-дизайнер
+            <option>Директор
+            <option>Другое
+          </select>
+          {if @$error.occupation}
+            <span class=error>Не указана профессия!</span>
+          {/if}
+        </td>
+      </tr>
+      <tr valign=top>
+        <td>Комментарий:</td>
+        <td>
+          <textarea name="new[text]" cols="60" 
+           rows="5" style="width:100%"></textarea>
+          {if @$error.text}
+            <span class=error>Слишком короткий текст сообщения!</span>
+          {/if}
+        </td>
+      </tr>
+      <tr valign=top>
+        <td>&nbsp;</td>
+        <td align=center>
+          <input style="width:100%" type="submit" 
+           name="doAdd" value="Добавить!">
+          {if $error}
+            <span class=error>Ошибка: сообщение не добавлено!</span>
+          {/if}
+        </td>
+      </tr>
+    </table>
+  </form>
+{/t_component}
+<!--/ Форма ввода новой записи. -->
+<!-- Вывод записей гостевой книги. -->
+{t_component src="Test_Gbook_Show" name="book" book="test"}
+  {foreach from="$book" key="id" item="e"}
+    <table width="100%" bgcolor="{cycle values="#DDDDDD,#CCCCCC"}">
+      <tr>
+        <td colspan=2>
+          {$e.stamp|date_format:"%Y-%m-%d %H:%M"}
+          <a href="mailto:{$e.email|htmlspecialchars}">
+            {$e.name|htmlspecialchars}
+          </a>:
+        </td>
+      </tr>
+      <tr>
+        <td width="1%">&nbsp;&nbsp;&nbsp;</td>
+        <td>{$e.text|htmlspecialchars}</td>
+      </tr>
+    </table>
+  {/foreach}
+{/t_component}
+<!--/ Вывод записей гостевой книги. -->

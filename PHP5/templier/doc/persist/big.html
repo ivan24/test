@@ -1,0 +1,64 @@
+##Title = Полная проверка
+##Text
+
+<a href="{$smarty.server.SCRIPT_NAME}">Clear all form (reset to defaults)</a>
+<form>
+<img hspace=0 src=alone.gif border=0 alt="2&gt;1">
+
+<br>
+<input type=text name=txt1 default="1.1">
+<input type=text name=txt2[] default="2.1">
+<input type=text name=txt2[] default="2.2">
+<input type=text name=txt3[a][] default="3.1">
+<input type=text name=txt3[a][] default="3.2">
+<input type=text name=txt3[b] default="3.3">
+<input type=text name=txt4 default="4.1" flip>
+
+<br>
+<textarea name=area1 default="ssss"></textarea>
+<textarea name=area2[]></textarea>
+<textarea name=area2[]></textarea>
+
+<br>
+<input type=radio name=rad1 value=r label="right"> |
+<input type=radio name=rad1 value=l label="left^"> |
+<input type=radio name=rad1 value=u> |
+<input type=radio name=rad1 value=d> |||
+<input type=radio name=rad2[a] value=u default=u> |
+<input type=radio name=rad2[a] value=d> |||
+useless: 
+<input type=radio name=rad2[] value=111>
+<input type=radio name=rad2[] value=222>
+
+<br>
+<input type=checkbox name=chk1[] value=aaa default>
+<input type=checkbox name=chk1[] value=bbb> |||
+<input type=checkbox name=chk2 value=xxx flip default>
+<input type=checkbox name=chk2 value=yyy flip> |||
+<input type=checkbox name=chk3[a] value=xxx flip>
+<input type=checkbox name=chk3[a] value=yyy flip> |||
+
+
+<br>
+<select name=sel1 size="3">
+	<option value=a>aaaaaaaaaaaaa
+	<option value=b>bbbbbbbbbbbbb
+	<option value=c>ccccccccccccc
+</select>
+<select name=sel2[] multiple size="3" bb="eaaa">
+	<option value=a>aaaaaaaaaaaaa
+	<option value=b>bbbbbbbbbbbbb
+	<option value=c>ccccccccccccc
+</select>
+<select name=sel3 flip size="3">
+	<option value=a>aaaaaaaaaaaaa
+	<option value=b>bbbbbbbbbbbbb
+	<option value=c>ccccccccccccc
+</select>
+
+<br>
+<input type=submit>
+<input type=submit confirm="Are you sure?" value="Sure?">
+</form>
+
+<hr>

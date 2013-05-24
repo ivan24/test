@@ -1,0 +1,23 @@
+##Text
+
+<p>Содержимое корневого каталога сайта:</p>
+{t_component src=Templier_Menu_Cached name=menu uri=".."}  
+  {foreach from=$menu.elements item="page" key="i"}
+    <li>
+    {if $page.context.current }
+      <b>{$page.title}</b>
+    {else}
+      <a href="{$page.context.uri}">
+        {if $page.context.isdir}
+          <i>{$page.title}...</i>
+        {else}
+          {if $page.context.active }
+            <b>{$page.title}</b>
+          {else}
+            {$page.title}
+          {/if}
+        {/if}
+      </a>
+    {/if}
+  {/foreach}
+{/t_component}

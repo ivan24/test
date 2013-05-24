@@ -1,0 +1,2 @@
+## Включаем PHP для файлов с расширением htm.
+AddHandler application/x-httpd-php5 htm

@@ -1,0 +1,17 @@
+<script language="JavaScript"><!--
+// Возвращает Cookie с указанным именем.
+function getCookie(name) {
+  var p = name + "=";
+  var si = document.cookie.indexOf(p);
+  if (si == -1) return null;
+  var ei = document.cookie.indexOf(";", si + p.length);
+  if (ei == -1) ei = document.cookie.length;
+  return unescape(document.cookie.substring(si + p.length, ei));
+}
+var t = getCookie("page_gentime");
+if (t) {
+  document.write("[Time: " + parseInt(t*1000)/1000 + "]")
+}  else {
+  document.write('?');
+}
+//--></script>

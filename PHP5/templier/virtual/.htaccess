@@ -1,0 +1,7 @@
+# Включаем mod_rewrite для текущей директории.
+RewriteEngine On
+Options +FollowSymLinks
+# Запрещаем обработку файла, на который производится переадресация.
+RewriteRule process\.html$  -  [L]
+# Все запросы к "виртуальным" html-файлам передаем обработчику.
+RewriteRule (.*)\.html  /templier/virtual/process.html?name=$1  [L,QSA]

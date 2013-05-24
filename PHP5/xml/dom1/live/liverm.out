@@ -1,0 +1,12 @@
+Исходный документ:
+<?xml version="1.0"?>
+<root><child0/><child1/><child2/><child3/></root>
+
+Обход 1-го уровня с установкой aтрибута id
+Удаление элемента N1:<child1 id="1"/>
+
+Пройденные узлы: <child0/><child1/><child3/>
+
+Итоговый документ:
+<?xml version="1.0"?>
+<root><child0 id="0"/><child2/><child3 id="2"/></root>

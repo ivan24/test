@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<e xmlns="http://.../namespace3">
+		DEFAULT == http://.../namespace3
+  <prefix1:e xmlns:prefix1="http://.../namespace1">
+		DEFAULT == http://.../namespace3
+		prefix1 == http://.../namespace1
+  </prefix1:e>
+  <prefix2:e xmlns:prefix2="http://.../namespace2">
+		DEFAULT == http://.../namespace3
+		UNKNOWN == http://.../namespace1
+		prefix2 == http://.../namespace2
+		prefix1 == UNKNOWN
+  </prefix2:e>
+  <e>
+		DEFAULT == http://.../namespace3
+		UNKNOWN == http://.../namespace1
+		UNKNOWN == http://.../namespace2
+		prefix1 == UNKNOWN
+		prefix2 == UNKNOWN
+  </e>
+  <e xmlns="http://.../namespace1">
+		UNKNOWN == http://.../namespace3
+		DEFAULT == http://.../namespace1
+		UNKNOWN == http://.../namespace2
+		prefix1 == UNKNOWN
+		prefix2 == UNKNOWN
+    <prefix1:e xmlns:prefix1="http://.../namespace3">
+		prefix1 == http://.../namespace3
+		DEFAULT == http://.../namespace1
+		UNKNOWN == http://.../namespace2
+		prefix2 == UNKNOWN
+      <prefix2:e xmlns:prefix2="http://.../namespace2">
+		prefix1 == http://.../namespace3
+		DEFAULT == http://.../namespace1
+		prefix2 == http://.../namespace2
+	<e xmlns="http://.../namespace3">
+		DEFAULT == http://.../namespace3
+		UNKNOWN == http://.../namespace1
+		prefix2 == http://.../namespace2
+		prefix1 == http://.../namespace3
+	</e>
+     </prefix2:e>
+    </prefix1:e>
+  </e>
+</e>

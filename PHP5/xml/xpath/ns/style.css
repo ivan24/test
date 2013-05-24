@@ -1,0 +1,6 @@
+th {text-align: right}
+td {text-align: left;font-size: x-large}
+div {padding-left:50;}
+span.xpathNode  {font-weight:bold;}
+span.contextNode  {text-decoration:underline;}
+span.error {color:red;}

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<out>:
+	string;
+	number;
+	boolean;
+	node-set;
+	RTF;
+	external;
+      </out>
+
+

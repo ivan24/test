@@ -1,0 +1,6 @@
+H1 {text-align:center;font-size:16;}
+//A {text-decoration:none;color:#333333;font-style:italic;}
+A {color:#333333;font-style:italic;}
+TABLE TR {vertical-align:top;}
+TABLE  TD:first-child {text-align:right;}
+TABLE  TD:last-child {vertical-align:bottom;}

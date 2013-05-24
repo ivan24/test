@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<root>
+ <child1 add="добавленный атрибут">текст</child1>
+ <child2 add="добавленный атрибут">текст+добавленный текст</child2>
+ <child1 add="добавленный атрибут">текст</child1>
+</root>

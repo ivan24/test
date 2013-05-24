@@ -1,0 +1,31 @@
+<!-- Компонентный подход. Шаблон гостевой книги. -->
+<html><head><title>Гостевая книга</title></head><body>
+
+<!-- Блок ввода нового сообщения. -->
+<?include "component_gbook_add.php"?>
+<h2>Добавьте свое сообщение:</h2>
+<form method="post">
+  Ваше имя: <input type=text name="new[name]"><br>
+  Комментарий:<br>
+  <textarea name="new[text]" cols="60" rows="5"></textarea><br>
+  <input type="submit" name="doAdd" value="Добавить!">
+</form>
+
+<!-- Блок сообщений гостевой книги. -->
+<?include "component_gbook_show.php"?>
+<h2>Сообщения гостевой книги:</h2>
+<?foreach ($Data as $id=>$e) {?>
+  Имя человека: <?=$e['name']?><br>
+  Его комментарий:<br> <?=$e['text']?><hr>
+<?}?>
+
+<!-- Блок новостей. -->
+<h2>Последние новости:</h2>
+<?include "component_news_show.php"?>
+<ul>
+<?foreach ($Data as $i=>$n) {?>
+  <li><?=$i+1?>-я новость: <?=$n?></li>
+<?}?>
+</ul>
+
+</body></html>

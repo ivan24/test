@@ -1,0 +1,12 @@
+Исходный документ:
+<?xml version="1.0"?>
+<root><child1/><child2/></root>
+
+Скорректированный документ:
+<?xml version="1.0"?>
+<root><child0/><child1/><child2/></root>
+
+Добавление атрибутов к узлам списка:
+Итоговый документ:
+<?xml version="1.0"?>
+<root><child0 id="0"/><child1 id="1"/><child2 id="2"/></root>

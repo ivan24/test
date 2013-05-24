@@ -1,0 +1,4 @@
+# Разрешаем исполнение CGI в текущей директории.
+Options +ExecCGI
+# Говорим Apache, что bat-файлы - это CGI-скрипты.
+AddHandler cgi-script bat

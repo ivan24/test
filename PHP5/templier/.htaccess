@@ -1,0 +1,7 @@
+## Подключение шаблонизатора для обработки всех html-файлов.
+Action templhandler "/templier/WEB-INF/TemplierHandler.php"
+AddHandler templhandler .html
+# Запрет на доступ к файлам, имя которых начинается с точки.
+<FilesMatch "^\.">
+deny from all
+</FilesMatch>

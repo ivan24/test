@@ -1,0 +1,3 @@
+<!-- Файл для проверки работоспособности SSI -->
+SSI Test!
+<hr><!--#include virtual="/index.html" --><hr>

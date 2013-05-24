@@ -1,0 +1,97 @@
+<?php ## Класс featuresTable, формирующий строки таблицы
+/**
+ * Класс, отображающий список список модулей стандарта DOM
+ * в виде таблицы HTML.
+ */
+class featuresTable {   //класс для вывода таблицы модулей
+    // {{{ properties
+    var $domImpl;   //переменная класса domImplementation
+    static $versions=Array("1.0","2.0","3.0");//версии стандарта DOM
+    // }}}
+    // {{{ constructor
+    function __construct()
+    {
+	?><TABLE BGCOLOR="#EEEEEE" BORDER=1 ALIGN="center"><?php
+	$this->domImpl=new domImplementation();
+    }
+    // }}}
+    // {{{ destructor()
+    function __destruct()
+    {
+	?></TABLE><?php
+    }
+    // }}}
+    // {{{ leftHead()
+    /**
+     * Вывести левую часть заголовка таблицы
+     *
+     *	@param int $depth "глубина" дерева модулей
+     */
+    function leftHead($depth)
+    {
+    ?>
+    <TR>
+    <TH ROWSPAN="2" COLSPAN="<?php echo $depth?>">Модуль(Features)</TH>
+    <?php
+    }
+    // }}}
+    // {{{ leftRow()
+    /**
+     * Вывести левую часть строки таблицы
+     *
+     *	@param int $level уровень модуля
+     *	@param int $depth "глубина" дерева модулей
+     *	@param int $name описание модуля
+     *	@param int $feature имя модуля
+     */
+    function leftRow($level,$depth,$name,$feature)
+    {
+	?><TR><?php
+	$span=$depth-$level;
+	for ($i=0;$i<$level;$i++)
+	    {?>
+	<TD WIDTH="100"></TD>
+	<?php }?>
+	<TD COLSPAN="<?php echo $span?>">
+	<?php echo utf8decode("$name($feature)")?>
+	</TD><?php
+    }
+    // }}}
+    // {{{ rightHead()
+    /**
+     * Вывести	правую часть заголовка таблицы
+     */
+    function rightHead() //вывести
+    {
+	?><TH COLSPAN="<?php echo count(featuresTable::$versions)?>"
+	   >Версии</TH
+	><TH ROWSPAN="2">Итого</TH
+	></TR
+	><TR
+	><?php
+	foreach(featuresTable::$versions as $version) {
+	    ?><TH><?php echo $version?></TH><?php
+	}
+	?></TR><?php
+    }
+    // }}}
+    // {{{ rightRow()
+    /**
+     * Вывести	правую часть строки таблицы
+     */
+    function rightRow($feature)
+    {
+	foreach(featuresTable::$versions as $version) {
+	    //отобразить реализацию версии указанного модуля
+	    $answer=($this->domImpl->hasFeature($feature,$version)?
+		    'Да':'Нет');
+	    ?><TH><?php echo $answer?></TH><?php
+	}
+	//реализован ли модуль вообще?
+	$answer=($this->domImpl->hasFeature($feature,'')?
+		'Да':'Нет');
+	?><TH><?php echo $answer?></TH></TR><?php
+    }
+    // }}}
+}
+?>

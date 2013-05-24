@@ -1,0 +1,5 @@
+<game moves='3'>
+ <l1><c1 move='2'>O</c1><c2 move=' '> </c2><c3 move=' '> </c3></l1>
+ <l2><c1 move=' '> </c1><c2 move='1'>X</c2><c3 move=' '> </c3></l2>
+ <l3><c1 move=' '> </c1><c2 move=' '> </c2><c3 move='3'>O</c3></l3>
+</game>

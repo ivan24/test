@@ -1,0 +1,56 @@
+<table>
+<!--Заголовок таблицы-->
+  <tr>
+    <th>Метод класса domDocument</th>
+    <th>Конструктор new</th>
+    <th>Параметры</th>
+  </tr>
+<!--Тело таблицы-->
+<!--Узел Element-->
+  <tr>
+    <td>createElement()</td>
+    <td>domElement()</td>
+    <td>string tagName - имя тега</td>
+  </tr>
+<!--Узел DocumentFragment-->
+  <tr>
+    <td>createDocumentFragment()</td>
+    <td>domDocumentFragment()</td>
+    <td/>
+  </tr>
+<!--Узел Text-->
+  <tr>
+    <td>createTextNode()</td>
+    <td>domText()</td>
+    <td>string data - текст</td>
+  </tr>
+<!--Узел Comment-->
+  <tr>
+    <td>createComment()</td>
+    <td>domComment()</td>
+    <td>string data - текст комментария</td>
+  </tr>
+<!--Узел CDATASection-->
+  <tr>
+    <td>createCDATASection()</td>
+    <td>domCDATASection()</td>
+    <td>string data - текст секции</td>
+  </tr>
+<!--Узел ProcessingInstruction-->
+  <tr>
+    <td>createProcessingInstruction()</td>
+    <td>domProcessingInstruction()</td>
+    <td>string target - имя приложения<br/>string data - текст команд приложения</td>
+  </tr>
+<!--Узел Attribute-->
+  <tr>
+    <td>createAttribute()</td>
+    <td>domAttribute()</td>
+    <td>string name - имя атрибута</td>
+  </tr>
+<!--Узел EntityReference-->
+  <tr>
+    <td>createEntityReference()</td>
+    <td>domEntityReference()</td>
+    <td>string name - имя компонента</td>
+  </tr>

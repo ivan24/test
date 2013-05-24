@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<book:book xmlns:book="http://www.nevod.ru/nevod/staff/kaf/php5book">
+  <book:if>
+    <phpns:format xmlns:phpns="http://www.nevod.ru/nevod/staff/kaf/php5">
+	if (условие): блок else блок endif;
+    </phpns:format>
+    <phpns:descr xmlns:phpns="http://www.nevod.ru/nevod/staff/kaf/php5">
+	...
+    </phpns:descr>
+    <jsns:format xmlns:jsns="http://www.nevod.ru/nevod/staff/kaf/javascript">
+	if (условие) блок else блок
+    </jsns:format>
+    <jsns:descr xmlns:jsns="http://www.nevod.ru/nevod/staff/kaf/javascript">
+	...
+    </jsns:descr>
+  </book:if>
+  <book:for>
+    <phpns:format xmlns:phpns="http://www.nevod.ru/nevod/staff/kaf/php5">
+	for (установка; условие;выражение) блок
+    </phpns:format>
+    <phpns:descr xmlns:phpns="http://www.nevod.ru/nevod/staff/kaf/php5">
+	...
+    </phpns:descr>
+    <jsns:format xmlns:jsns="http://www.nevod.ru/nevod/staff/kaf/javascript">
+	for (переменная in объект) блок
+    </jsns:format>
+    <jsns:descr xmlns:jsns="http://www.nevod.ru/nevod/staff/kaf/javascript">
+	...
+    </jsns:descr>
+  </book:for>
+</book:book>

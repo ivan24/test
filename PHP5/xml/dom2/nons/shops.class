@@ -1,0 +1,91 @@
+<?php ## ќписание класса shops
+require_once 'unicode.inc';
+/**
+ *  ласс дл€ работы магазинами.
+ */
+class shops extends domDocument {
+    // {{{ properties
+    var $xmlfile;
+    // }}}
+    // {{{ constructor
+    /**
+     * »нициализировать экземпл€р класса.
+     *
+     * @param string $file им€ XML файла описывающий магазины
+     */
+    function shops($file='shops.xml')
+    {
+    parent::__construct('1.0',Encoding);    //создать domDocumnent
+    $this->xmlfile=$file;	    //запомнить им€ XML-файла
+    $this->preserveWhiteSpace=false;//убрать лишние \n
+    $this->formatOutput=true;	    //вывод форматировать
+    $this->load($this->xmlfile);    //загрузить файл
+    }
+    // }}}
+    // {{{ walk()
+    /**
+     * ѕройтись с заказом $order и бумажником $wallet
+     *
+     * @param order $order описание заказа
+     * @param wallet $wallet описание бумажника
+     */
+    function walk($order,$wallet,$element=null)
+    {
+	//не знаешь где - зри в корень
+	if ($element==null) $element=$this->documentElement;
+	if ($element->tagName==utf8encode('парти€')) {
+	    //уткнулс€ в товар
+	    $good=$element->getAttribute(utf8encode('им€'));//прочитай им€
+	    if (isset($order->goods[$good])) {//есть в списке заказов ?
+		//посмотри количество
+		$count=$order->goods[$good][utf8encode('количество')];
+		$sum=$this->sell($element,$count);  //возьми
+		$wallet->pay($sum); //оплати
+		$order->done($good);//вычеркни из списка
+	    }
+	}
+	if ($children=$element->childNodes) {//огл€дись кругом
+	    foreach ($children as $child) { //есть что посмотреть?
+		if ($child->nodeType!=XML_ELEMENT_NODE) continue;
+		$this->walk($order,$wallet,$child); //продолжи поиск
+	    }
+	}
+    }
+    // }}}
+    // {{{ walk()
+    /**
+     * ѕродать товар
+     *
+     * @param domElement $element продаваемый товар
+     * @param int $count количество
+     *
+     * @return float сумма товара
+     */
+    function sell($element,$count)
+    {
+	$utfprice=utf8encode('стоимость');
+	$utfquant=utf8encode('количество'); //имена атрибутов в UTF-8
+	$price=$element->getAttribute($utfprice);//цена товара
+	$quant=$element->getAttribute($utfquant);//посмотреть количество
+	$quant-=$count; //убрать выбранное количество
+	$sum=$price*$count; //посчитать стоимость
+	//запомнить оставшеес€ количество
+	$element->setAttribute($utfquant,$quant);
+	return $sum;	//сообщить сумму товара
+    }
+    // }}}
+    // {{{ walk()
+    /**
+     *	«апомнить  состо€ние магазинов после ¬ашего визита
+     *
+     * @param string $file им€ XML файла описывающий магазины
+     */
+    function save($xmlfile=NULL)
+    {
+	if ($xmlfile==NULL)	//если файл не указан
+	    $xmlfile=$this->xmlfile;	//вз€ть начальный файл
+	parent::save($xmlfile); //сохранить файл
+    }
+    // }}}
+}
+?>

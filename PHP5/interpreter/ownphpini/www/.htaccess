@@ -1,0 +1,3 @@
+# Заставляем Apache запускать php5.bat для файлов *.php.
+AddHandler application/x-httpd-php5 php
+Action application/x-httpd-php5 /interpreter/ownphpini/cgi/php5.bat

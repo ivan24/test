@@ -1,0 +1,8 @@
+##Title = Новости сайта
+##Order = 15
+##Text 
+{t_component src="Test_News_Show" name="news" num="2" file="news.txt"}
+  {foreach from="$news" item="n"}
+    <li><b>{$n.date}</b> {$n.text}
+  {/foreach}
+{/t_component}

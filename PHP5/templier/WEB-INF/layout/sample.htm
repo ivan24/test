@@ -1,0 +1,39 @@
+<!-- Простой Макет страницы. -->
+##@Output
+<html>
+<head>
+<title>{{Title glue=" &laquo; " reverse="yes"}}</title>
+</head>
+<body bgcolor="silver" text="#000000">
+  <table height=100% cellpadding=5 cellspacing=0 width=100% border=0>
+    <tr height="1">
+      <td colspan="4">
+        <h1>"Хлебные крошки"</h1>
+        </h1>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td width="20%">
+        <h2>Карта подраздела.</h2>
+      </td>
+      <td width="1">
+        <table cellpadding=0 cellspacing=0 height=100%><tr>
+          <td width="1" bgcolor="gray"><div style="width:1"></div></td>
+          <td width="1" bgcolor="white"><div style="width:1"></div></td>
+        </tr></table>
+      </td>
+      <td width="800%">
+        <!-- Основной текст страницы. -->
+        <h2>{{Title}}</h2>
+        {{Text}}
+      </td>
+    </tr>
+    <tr height="1">
+      <td colspan="4">
+        <hr>
+        &copy; {$smarty.now|date_format:"%Y"}, {{Author}}.
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

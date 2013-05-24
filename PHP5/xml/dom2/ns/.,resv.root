@@ -1,0 +1,11 @@
+macro b
+Cb
+.
+tabset -1 "" 9 17 *8
+set keys "-el+i-I+s-af+t+T-SzF"
+set indentcol 60
+status
+P0,-1,0,-2,1,0
+f0,0,7,0, ../../koitowin.sh
+C0
+.

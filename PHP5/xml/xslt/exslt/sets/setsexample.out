@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<out>
+  <div>
+Теги, имеющие атрибут src:
+		img,script,frame,iframe</div>
+  <div>
+Теги, имеющие атрибут width:
+		img,table,hr,td,th,tr</div>
+  <div>
+Теги, имеющие атрибуты src и width:
+		img</div>
+  <div>
+Теги, имеющие атрибут src, но не имеющие атрибута width:
+		script,frame,iframe</div>
+  <div>
+Теги, имеющие атрибут width, но не имеющие атрибута src:
+		table,hr,td,th,tr</div>
+</out>
+
+

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <title>Лучшие песни :-)</title>
+  </head>
+  <body>
+    <table align="center" width="100%">
+      <tr>
+	<td valign="top" align="center">
+	  <div class="song">
+	    <h2>Песня N1:
+	    Будь моей Му-Му</h2>
+	    <table>
+	      <tr>
+		<th align="right" valign="top">Куплет</th>
+		<td>
+		  <div class="stub">Содержание куплета</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Припев</th>
+		<td>
+		  <div class="stub">Содержание припева</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Куплет</th>
+		<td>
+		  <div class="stub">Содержание куплета</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Припев</th>
+		<td>
+		  <div class="stub">Содержание припева</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Конец</th>
+		<td>
+		  <div class="stub">Содержание окончания</div>
+		</td>
+	      </tr>
+	    </table>
+	  </div>
+	</td>
+	<td valign="top" align="center">
+	  <div class="song">
+	    <h2>Песня N2:
+	     Будь или не  будь</h2>
+	    <table>
+	      <tr>
+		<th align="right" valign="top">Куплет</th>
+		<td>
+		  <div class="stub">Содержание куплета</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Припев</th>
+		<td>
+		  <div class="stub">Содержание припева</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Куплет</th>
+		<td>
+		  <div class="stub">Содержание куплета</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Припев</th>
+		<td>
+		  <div class="stub">Содержание припева</div>
+		</td>
+	      </tr>
+	      <tr>
+		<th align="right" valign="top">Конец</th>
+		<td>
+		  <div class="stub">Содержание окончания</div>
+		</td>
+	      </tr>
+	    </table>
+	  </div>
+	</td>
+      </tr>
+    </table>
+  </body>
+</html>

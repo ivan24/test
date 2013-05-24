@@ -1,0 +1,63 @@
+<?php ## Описание класса wallet(wallet.class)
+require_once 'unicode.inc';
+/**
+ * Класс для работы с бумажником.
+ */
+class wallet extends domDocument {
+    // {{{ properties
+   var $xmlfile;   //XML-файл описания бумажника
+   var	$purse;     //указатель на кошелек
+    // }}}
+    // {{{ constructor
+    /**
+     * Инициализировать бумажник.
+     *
+     * @param string $file имя XML файла описывающий бумажник
+     */
+    function wallet($file='wallet.xml')
+    {
+	parent::__construct('1.0',Encoding); //создать domDocumnent
+	$this->xmlfile=$file;		  //запомнить имя XML-файла
+	$this->preserveWhiteSpace=false;  //убрать лишние \n
+	$this->formatOutput=true;	  //вывод форматировать
+	$this->load($this->xmlfile);	  //загрузить файл
+	$utfpurse=utf8encode('кошелек');
+	for($child=$this->documentElement->firstChild;
+	    $child; $child=$child->nextSibling) {
+	    //пройтись по узлам 1-го уровня
+	    if ($child->nodeType!= XML_ELEMENT_NODE) continue;
+	    if ($child->tagName==$utfpurse) //элемент - бумажник?
+		$this->purse=$child; //запомнить его в переменной purse
+	}
+    }
+    // }}}
+    // {{{ pay()
+    /**
+     * Заплатить указанную сумму.
+     *
+     *	@param float $sum сумма оплаты
+     */
+    function pay($sum)
+    {
+	$utfsumma=utf8encode('сумма');//имя атрибута "сумма" в UTF-8
+	$summa=$this->purse->getAttribute($utfsumma);//текущая сумма
+	$summa-=$sum;	//уменьшается на цену товара
+	//и записывается в атрибут
+	$this->purse->setAttribute($utfsumma,$summa);
+    }
+    // }}}
+    /**
+     * Вернуть бумажник в файл.
+     ;
+     * @param string $file имя XML файла описывающий бумажник
+     */
+    // {{{ save()
+    function save($xmlfile=NULL)
+    {
+    if ($xmlfile==NULL)     //если файл не указан
+	$xmlfile=$this->xmlfile;    //взять начальный файл
+    parent::save($xmlfile); //сохранить файл
+    }
+    // }}}
+}
+?>

@@ -1,0 +1,8 @@
+<?php
+$ns=Array (
+    "политика"=>    "http://www.nevod.ru/nevod/staff/kaf/politics",
+    "usa"=>    "http://www.nevod.ru/nevod/staff/kaf/usapolitics",
+    "товар"=>	    "http://www.nevod.ru/nevod/staff/kaf/trade",
+    "продукт"=>     "http://www.nevod.ru/nevod/staff/kaf/products"
+);
+?>

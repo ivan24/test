@@ -1,0 +1,5 @@
+<!--Описание внешней компоненты-->
+<!ENTITY book SYSTEM "http://www.mozilla.org/newlayout/xml/books/books.xml">
+
+<!--Описание внутренней компоненты-->
+<!ENTITY date "<Year>2002</Year>.<Month>11</Month>.<Day>12>/Day>">

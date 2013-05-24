@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<book:book xmlns:book="http://www.nevod.ru/nevod/staff/kaf/php5book"
+	   xmlns:phpns="http://www.nevod.ru/nevod/staff/kaf/php5"
+	   xmlns:jsns="http://www.nevod.ru/nevod/staff/kaf/javascript"
+       phpns:theme="php-controls" jsns:theme="js-controls">
+  <book:if>
+    <phpns:format>if (условие): блок else блок endif;</phpns:format>
+    <phpns:descr>...</phpns:descr>
+    <jsns:format>if (условие) блок else блок</jsns:format>
+    <jsns:descr>...</jsns:descr>
+  </book:if>
+  <book:for>
+    <phpns:format>for (установка; условие;выражение) блок</phpns:format>
+    <phpns:descr>...</phpns:descr>
+    <jsns:format>for (переменея in объект) блок</jsns:format>
+    <jsns:descr>...</jsns:descr>
+  </book:for>
+</book:book>
+

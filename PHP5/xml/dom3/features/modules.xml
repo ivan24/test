@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="WINDOWS-1251"?>
+<Core name="Ядро">
+  <XML name="XML"/>
+  <HTML name="HTML"/>
+  <Xpath name="Xpath"/>
+  <Traversal name="Обход XML-дерева"/>
+  <Range name="Выборка частей документа"/>
+  <Validation name="Проверка"/>
+  <LS name="Загрузка и выгрузка">
+    <LSAsync name="Асинхронная загрузка и выгрузка"/>
+  </LS>
+  <DocumentLS name="Загрузка и выгрузка документа"/>
+  <ElementLS name="Загрузка и выгрузка элемента"/>
+  <Views name="Отображения"/>
+  <Stylesheets name="Стили">
+    <CSS name="Стили CSS"/>
+    <CSS2 name="Стили CSS2"/>
+  </Stylesheets>
+  <Events name="События">
+    <HTMLEvents name="События стандарта HTML"/>
+    <UIEvents name="События пользовательского интерфейса">
+	<KeyboardEvents name="События клавиатуры"/>
+	<MouseEvents name="События мыши"/>
+	<TextEvents name="Текстовые события"/>
+    </UIEvents>
+    <MutationEvents name="События модификации">
+      <MutationNameEvents name="Именованные события модификации"/>
+    </MutationEvents>
+  </Events>
+</Core>

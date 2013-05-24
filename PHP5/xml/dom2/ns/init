@@ -1,0 +1,6 @@
+
+for i in forum order wallet
+do
+    cp $i.xml.init $i.xml
+    echo $i
+done

@@ -1,0 +1,25 @@
+domexception Object
+(
+    [message:protected] => No Modification Allowed Error
+    [string:private] =>
+    [file:protected] => .../exception1.php
+    [line:protected] => 24
+    [trace:private] =>
+    [code] => 7
+    [trace] => Array
+	(
+	    [0] => Array
+		(
+		    [file] => .../exception1.php
+		    [line] => 5
+		    [function] => appendattrs
+		    [args] => Array
+			(
+			    [0] => id
+			    [1] => 1
+			)
+		)
+	)
+)
+<?xml version="1.0"?>
+<root id="0" name="default"/>

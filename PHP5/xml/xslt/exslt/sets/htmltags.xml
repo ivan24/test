@@ -1,0 +1,11 @@
+<tags>
+<img src='uri' width='number' height='number' alt='string'/>
+<table width='...' height='...'/>
+<script src='uri'/>
+<frame src='uri'/>
+<iframe src='uri'/>
+<hr width='number'/>
+<td width='number' height='number'/>
+<th width='number' height='number'/>
+<tr width='number' height='number'/>
+</tags>
