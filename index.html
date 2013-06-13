@@ -2,27 +2,11 @@
 <html>
 <head>
     <title></title>
+    <script type=text/javascript src ="./scripts/jquery.js"></script>
 </head>
 <body>
 <script type="text/javascript">
-    function Animal(name){
-        this.name = name;
-        this.canWalk = true;
-    }
-
-    function Rabbit(name){
-        this.name = name;
-    }
-
-    function extend(child, parent){
-        var F = function(){};
-        F.prototype = parent.prototype;
-        child.prototype = new F();
-        child.prototype.constructor = child;
-        child.superclass = parent.prototype;
-    }
-    extend(Rabbit,Animal);
-
+    
 </script>
 
 
