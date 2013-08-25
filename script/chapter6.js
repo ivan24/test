@@ -1,57 +1,41 @@
 /*inherits 6*/
 /*
-
-function Article() {
-    this.tagas = ['js','css'];
+function inherit(C, P) {
+    var F = function () {};
+    F.prototype = P.prototype;
+    C.prototype = new F();
+    C.uber = P.prototype;
+    C.prototype.constructor = C;
 }
+function Parent() {}
+function Child() {}
+inherit(Child, Parent);
+var kid = new Child();
+console.log(kid.constructor.name);*/
 
-var article = new Article();
-function BlogPost() {
-
-}
-BlogPost.prototype = article;
-var blog = new BlogPost();
-function StaticPage() {
-    Article.call(this);
-}
-var page = new StaticPage();
-console.log(article, blog, page);
-console.log(article.tagas, blog.tagas, page.tagas);
-blog.tagas.push('php');
-page.tagas.push('java');
-console.log(article.tagas, blog.tagas, page.tagas);
-*/
 
 /*
-function Parent(name) {
-    this.name = name || "Adam";
-}
-Parent.prototype.say = function () {
-    return this.name;
+var one = {
+    name: 'one',
+    say: function (greet) {
+        console.log(greet + " " + this.name);
+    }
 };
+one.say('Hi,');
 
-function Child(name) {
-    Parent.apply(this, arguments);
+var ivan = {
+    name: 'Ivan'
+};
+one.say.call(ivan, ['hello']);
+var test= function(thisArg) {
+    debugger;
+    var fn = this,
+        slice = Array.prototype.slice,
+        args = slice.call(arguments, 1);
+    return function () {
+        return fn.apply(thisArg, args.concat(slice.call(arguments)));
+    };
 }
-var kid = new Child('Patric');
-var parent = new Parent('Ivan');
-console.log(kid.name);
-//console.log(kid.say());
-console.log(typeof kid.say);
+
+var ts = test(ivan);
 */
-
-function Cat() {
-    this.legs = 4;
-    this.say = function () {return 'mmmmm'};
-}
-function Bird() {
-    this.wings = 2;
-    this.fly = true;
-}
-function CatWings() {
-    Cat.apply(this);
-    Bird.apply(this);
-}
-
-var jane = new CatWings();
-console.dir(jane);
