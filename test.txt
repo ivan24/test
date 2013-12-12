@@ -1,0 +1,37 @@
+http://job.lightsoft.ru/makeTest?key=e1af023bcd83e71cf02cb5284656fe53
+
+------------------1-----------
+
+ //1 добавить класс
+    $('.c').addClass('a');
+   или вот
+    var classC = document.getElementsByClassName('c');
+
+    for (var i = 0; i < classC.length; ++i) {
+        var item = classC[i];
+        item.className = item.className + " a";
+    }
+
+
+
+    //2 поменять свойство у самого текста
+    $('.c').css('color','green');
+    или вот так
+
+    var classC = document.getElementsByClassName('c');
+
+    for (var i = 0; i < classC.length; ++i) {
+        var item = classC[i];
+        item.style.color = "green";
+    }
+
+------------------2-----------
+1.) SELECT * FROM  `category` WHERE  `parent_category_id` IS NULL AND `name` LIKE 'avto%';
+2) - не знаю
+3)SELECT child.id, child.parent_category_id, child.name
+FROM  `category` as parent
+LEFT OUTER JOIN `category` as child On parent.id = child.parent_category_id
+WHERE  child.id IS NOT NULL
+
+
+------------------3-----------

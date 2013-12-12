@@ -1,7 +1,11 @@
-<?php
-$str = 'ivan\\test\\cool.php';
-
-$file = substr($str, strrpos($str, '\\')+1);
-$namespace = substr($str, 0, strrpos($str, '\\') - (strlen($str)-1));
-
-var_dump($file,$namespace,$str);
+<html>
+<head>
+    <meta content="text/html" charset="utf-8">
+    <script src = "./script/jquery.js"></script>
+</head>
+<body>
+<pre>
+    <?php include "./test.php";?>
+</pre>
+</body>
+</html>
