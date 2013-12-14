@@ -4,6 +4,12 @@
     <title>test</title>
 </head>
 <body>
-<?= array_pop($request->getFeedback()); ?>
+<ol>
+    <?php
+    $feedbacks = $request->getFeedback();
+    foreach($feedbacks as $ele){
+        print  "<li>$ele</li>";
+    }; ?>
+</ol>
 </body>
 </html>

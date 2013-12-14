@@ -25,7 +25,7 @@ class CommandResolver
         }
         $cmd = str_replace(array('.', $sep), "", $cmd);
         $filePath = __DIR__ . "{$sep}{$cmd}.php";
-        $className = "\\Commands\\$cmd";
+        $className = "\\Command\\$cmd";
         if (file_exists($filePath)) {
             require_once("$filePath");
             if (class_exists($className)) {
