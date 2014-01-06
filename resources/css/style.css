@@ -1,0 +1,115 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -60px;
+    /* Pad bottom by footer height */
+    padding: 0 0 60px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+    height: 60px;
+    background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+#wrap > .container {
+    padding: 60px 15px 0;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+
+#footer > .container {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+code {
+    font-size: 80%;
+}
+
+/* ul-treefree */
+ul.ul-treefree {
+    padding-left: 25px;
+}
+
+ul.ul-treefree ul {
+    margin: 0;
+    padding-left: 6px;
+}
+
+ul.ul-treefree li >ul {
+    display: none;
+}
+ul.ul-treefree li {
+    position: relative;
+    list-style: none outside none;
+    border-left: solid 1px #999;
+    margin: 0;
+    padding: 0 0 0 19px;
+    line-height: 23px;
+}
+
+ul.ul-treefree li:before {
+    content: '';
+    display: block;
+    border-bottom: solid 1px #999;
+    position: absolute;
+    width: 18px;
+    height: 11px;
+    left: 0;
+    top: 0;
+}
+
+ul.ul-treefree li:last-child {
+    border-left: 0 none;
+}
+
+ul.ul-treefree li:last-child:before {
+    border-left: solid 1px #999;
+}
+
+/* ul-dropfree */
+ul.ul-dropfree div.drop {
+    width: 11px;
+    height: 11px;
+    position: absolute;
+    z-index: 10;
+    top: 6px;
+    left: -6px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAALCAIAAAD0nuopAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE1JREFUeNpinDlzJgNlgAWI09LScEnPmjWLoAImrHpIAkwMFAMqGMGC6X44GzkIsHoQooAFTTVQKdbAwxOigyMsmIh3MC7ASHnqBAgwAD4CGeOiDhXRAAAAAElFTkSuQmCC') no-repeat -11px 0;
+    cursor: pointer;
+}
+#overlay {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000 url('/resources/img/loading.gif') no-repeat center;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=55);
+    -moz-opacity: 0.55;
+    -khtml-opacity: 0.55;
+    opacity: 0.55;
+}
+* html #overlay {
+    position: absolute;
+    height: expression(document.body.scrollHeight > document.body.offsetHeight ? document.body.scrollHeight : document.body.offsetHeight + "px");
+}

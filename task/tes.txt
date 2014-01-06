@@ -1,0 +1,82 @@
+1. AppendIterator( соединить два iteratora)
+2. FilterIterator соединить два первых элемента в массиве.
+3. ReqExpIterator в массиве $array = ['apple', 'avocado', 'pineapple', 'orange', 'potato'], отобрать элементы которые
+начинаются с буквы а
+4.  array (0 => 'A', 1 => 'B', 2 => 'C', 3 => 'D', 4 => 'F', 'nonumeric' => 'useless'); оставить только не числовые ключи
+
+5. IteratorIterator ограничение вывода из базы данных.
+Вывести первые 3 записи не используя SQL синтаксис
+
+CREATE TABLE `ShowIteratorIterator` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8 DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of ShowIteratorIterator
+-- ----------------------------
+INSERT INTO `ShowIteratorIterator` VALUES ('1', 'A');
+INSERT INTO `ShowIteratorIterator` VALUES ('2', 'B');
+INSERT INTO `ShowIteratorIterator` VALUES ('3', 'C');
+INSERT INTO `ShowIteratorIterator` VALUES ('4', 'D');
+INSERT INTO `ShowIteratorIterator` VALUES ('5', 'F');
+INSERT INTO `ShowIteratorIterator` VALUES ('6', 'G');
+
+
+6.ParentIterator Используя итератор оставить только элементы имеющие потомков.
+
+$arr = [
+       'a',
+       array('a', 'b', 'c'),
+       'b',
+       array('a', 'b', 'c'),
+       'c',
+       'd'
+   ];
+
+7. Отфильтровать часть методов в классе SplFileInfo
+8. Написать функция формирующий вложенный массив на основе файлов дирректории
+один способ на основе DirectoryIteratot
+9. Создать многомерный список на основе файлов дирректории RecursiveDirectoryIterator
+
+10. Создать Shopping Cart. Использовать ArrayObject
+Струкура Product информация о продукте.
+Сart содержит продукты. Должна быть возможность получить общую стоимость продуктов.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
