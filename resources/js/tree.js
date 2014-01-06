@@ -1,16 +1,16 @@
-$(".drop").click(function() {
+$(".drop").click(function () {
     var base = $(this),
         nextUl = base.nextAll("ul");
 
     if (nextUl.css('display') === 'none') {
         nextUl.slideDown(400);
-        base.css({'background-position':"-11px 0"});
+        base.css({'background-position': "-11px 0"});
     } else {
         nextUl.slideUp(400);
-        base.css({'background-position':"0 0"});
+        base.css({'background-position': "0 0"});
     }
 });
-$(".ul-dropfree").find("ul").slideUp(400).parents("li").children("div.drop").css({'background-position':"0 0"});
+$(".ul-dropfree").find("ul").slideUp(400).parents("li").children("div.drop").css({'background-position': "0 0"});
 
 $("#expose").on('click', function () {
     var base = $(this),
@@ -35,33 +35,30 @@ $("#button-execute").on('click', function () {
         base.addClass('active')
     }
 });
+
 $('.dev-file').on('click', function () {
-    var base = this,
+    var base = $(this),
         overlay = document.getElementById('overlay'),
-        namespace = [],
-        data = {
-            'type': "POST",
-            'url': '/ajax.php',
-            dataType: "html"
-        },
+        namespace = [base.text()],
         execButton = $("#button-execute").hasClass('active');
 
-    namespace.push($(base).text())
-    $(base).parents('li').each(function(){
+    base.parents('li').each(function () {
         var text = $(this).clone().children().remove().end().text();
-        if(text !== '') {
-            namespace.unshift (text)
+        if (text !== '') {
+            namespace.unshift(text)
         }
     });
+
     if (!overlay) {
         $("body").append("<div id='overlay'></div>");
     }
-    if(!execButton) {
-        data.data = { class: namespace.join('\\') }
-    } else {
-        data.data = {file: namespace.join('/')}
-    }
-    $.ajax(data).done(function (msg) {
+    $.ajax({
+        type: "POST",
+        url: '/ajax.php',
+        data: {file: namespace.join('/'), exec: execButton},
+        dataType: "html"
+    }).done(function (msg) {
+            console.log(msg);
             $("#dev-insert-code").html(msg);
         }).always(function () {
             setTimeout(function () {
