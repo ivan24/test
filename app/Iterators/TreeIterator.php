@@ -23,7 +23,7 @@ class TreeIterator extends \RecursiveDirectoryIterator
     public function getHTML()
     {
         $list = $this->dom->createElement('ul');
-        $list->setAttribute("class", "ul-treefree ul-dropfree");
+        $list->setAttribute("class", "ul-treeFree ul-dropFree");
         $this->dom->appendChild($list);
         $node = $list;
         /** @var \SplFileInfo $fileInfo */

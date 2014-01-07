@@ -10,41 +10,46 @@ var queryString = function () {
             queryString[pair[0]] = pair[1];
             // If second entry with this name
         } else if (typeof queryString[pair[0]] === "string") {
-            var arr = [ queryString[pair[0]], pair[1] ];
-            queryString[pair[0]] = arr;
+            queryString[pair[0]] = [ queryString[pair[0]], pair[1] ];
             // If third or later entry with this name
         } else {
             queryString[pair[0]].push(pair[1]);
         }
     }
     return queryString;
-}
+};
 
 
 $(".drop").click(function () {
     var base = $(this),
-        nextUl = base.nextAll("ul");
+        nextUl = base.nextAll("ul"),
+        position = '-11px 0';
 
     if (nextUl.css('display') === 'none') {
         nextUl.slideDown(400);
-        base.css({'background-position': "-11px 0"});
     } else {
         nextUl.slideUp(400);
-        base.css({'background-position': "0 0"});
+        position = "0 0";
     }
+    base.css({'background-position': position});
 });
-$(".ul-dropfree").find("ul").slideUp(400).parents("li").children("div.drop").css({'background-position': "0 0"});
 
 $("#expose").on('click', function () {
     var base = $(this),
-        isExpose = (base.text() == "Раскрыть");
+        isExpose = (base.text() == "Раскрыть"),
+        tree = $(".ul-treeFree.ul-dropFree").find("ul"),
+        buttonMsg = 'Закрыть',
+        position = "-11px 0";
+
     if (isExpose) {
-        base.text('Закрыть');
-        $(".ul-treefree.ul-dropfree").find("ul").slideDown(400).parents("li").children("div.drop").css({'background-position': "-11px 0"});
+        tree.slideDown(400);
     } else {
-        base.text('Раскрыть');
-        $(".ul-treefree.ul-dropfree").find("ul").slideUp(400).parents("li").children("div.drop").css({'background-position': "0 0"});
+        buttonMsg ='Раскрыть';
+        position = "0 0";
+        tree.slideUp(400);
     }
+    tree.parents("li").children("div.drop").css({'background-position': position});
+    base.text(buttonMsg);
 });
 
 
@@ -66,7 +71,7 @@ $('.dev-file').on('click', function () {
         execButton = $("#button-execute").hasClass('active');
 
     base.parents('li').each(function () {
-        var text = $(this).clone().children().remove().end().text();
+        var text = $(this).clone().children('').remove().end().text();
         if (text !== '') {
             namespace.unshift(text)
         }
