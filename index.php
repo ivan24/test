@@ -78,8 +78,8 @@
                 </p>
                 <?=(new \Iterators\TreeIterator(__DIR__.'/app'))->getHTML(); ?>
             </div>
-            <div class="col-md-9">
-                <pre><code class="php" id = "dev-insert-code"></code></pre>
+            <div class="col-md-9" id = "dev-insert-code">
+
             </div>
 
         </div>
@@ -98,7 +98,7 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="./resources/js/jquery.10.2.js"></script>
 <script src="./resources/js/bootstrap.min.js"></script>
 <script src="./resources/js/tree.js"></script>
 <script src="./resources/highlight/highlight.pack.js"></script>

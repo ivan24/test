@@ -1,3 +1,26 @@
+var queryString = function () {
+
+    var queryString = {},
+        query = window.location.search.substring(1),
+        vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        // If first entry with this name
+        if (typeof queryString[pair[0]] === "undefined") {
+            queryString[pair[0]] = pair[1];
+            // If second entry with this name
+        } else if (typeof queryString[pair[0]] === "string") {
+            var arr = [ queryString[pair[0]], pair[1] ];
+            queryString[pair[0]] = arr;
+            // If third or later entry with this name
+        } else {
+            queryString[pair[0]].push(pair[1]);
+        }
+    }
+    return queryString;
+}
+
+
 $(".drop").click(function () {
     var base = $(this),
         nextUl = base.nextAll("ul");
@@ -55,11 +78,14 @@ $('.dev-file').on('click', function () {
     $.ajax({
         type: "POST",
         url: '/ajax.php',
-        data: {file: namespace.join('/'), exec: execButton},
+        data: $.extend({}, {file: namespace.join('/'), exec: execButton}, queryString()),
         dataType: "html"
     }).done(function (msg) {
-            console.log(msg);
-            $("#dev-insert-code").html(msg);
+            var html = msg;
+            if (!execButton) {
+                html = '<pre><code class="php" >' + msg + '</code></pre>'
+            }
+            $("#dev-insert-code").html(html);
         }).always(function () {
             setTimeout(function () {
                 $('#overlay').remove();
