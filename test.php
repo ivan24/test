@@ -1,84 +1,16 @@
 <?php
-class Login implements SplSubject
-{
-    const LOGIN_SUCCESS = 1;
-    const LOGIN_FAILED = 0;
-    private $storage;
-    private $status;
+$arr = unserialize('a:1:{i:0;a:3:{s:4:"file";s:89:"http://images.irondealer.com/dealers/306/56/72828/machines/1886811-635140558333421905.jpg";s:7:"primary";i:0;s:5:"notes";s:11:"First image";}}');
+var_dump($arr);
+/*$client = new \SoapClient('https://services.ironsolutions.com/SearchDataService/SearchDataService.asmx?WSDL');
+$header = new \SoapHeader('http://services.ironsolutions.com', 'AuthHeader',array(
+    'Password'=>'kPYVR7BH',
+    'Email'=>'webmaster@westernsales.ca',
+));
 
-    public function __construct()
-    {
-        $this->storage = new SplObjectStorage();
-    }
+$client->__setSoapHeaders($header);
 
-    public function attach (SplObserver $observer)
-    {
-        $this->storage->attach($observer);
-    }
+$inventory_list = $client->__soapCall('GetInventoryList', array())->inventoryList;
+file_put_contents(__DIR__.'/arr.php', var_export($inventory_list, true));
+// processing dealer info
+$dealer = array();*/
 
-    public function detach (SplObserver $observer)
-    {
-        $this->storage->detach($observer);
-    }
-
-    public function notify ()
-    {
-        foreach ($this->storage as $observer) {
-            $observer->update($this);
-        }
-    }
-
-    public function validate()
-    {
-        switch(mt_rand(1,2)){
-            case 1:
-                echo "1<br>";
-                $this->setStatus(self::LOGIN_SUCCESS);
-                break;
-            case 2:
-                echo "2<br>";
-                $this->setStatus(self::LOGIN_FAILED);
-                break;
-            default:
-                echo "default";
-        }
-        $this->notify();
-    }
-
-    /**
-     * @param mixed $status
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-
-
-
-}
-
-class Logger implements SplObserver
-{
-    public function update(SplSubject $subject)
-    {
-        if($subject->getStatus()=== Login::LOGIN_SUCCESS){
-            echo "User successfull login";
-        } elseif ($subject->getStatus() === Login::LOGIN_FAILED) {
-            echo "User doesn't login";
-        }
-
-    }
-}
-
-$login = new Login();
-$login->attach(new Logger());
-$login->validate();
